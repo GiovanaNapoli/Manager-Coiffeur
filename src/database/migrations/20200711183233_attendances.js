@@ -5,15 +5,15 @@ exports.up = function (knex) {
 
         table.increments('id').primary();
         table.integer('establishment_id').unsigned();
-        table.integer('procedure_id').unsigned();
-        table.string('name_client').notNullable();
-        table.boolean('type_attendance').notNullable();
-        table.date('hour').notNullable();
+        table.integer('customer_id').notNullable();
+        table.time('hour').notNullable();
         table.date('date').notNullable();
         table.decimal('price', { precision: 2 }).notNullable();
+        table.string('description').nullable();
         table.boolean('status').notNullable();
+        
         table.foreign('establishment_id').references('establishments.id');
-        table.foreign('procedure_id').references('procedures.id');
+        table.foreign('customer_id').references('customers.id');
 
     });
 

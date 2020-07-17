@@ -1,13 +1,14 @@
 
 exports.up = function (knex) {
 
-    return knex.schema.createTable('procedures', (table) => {
+    return knex.schema.createTable('customers', (table) => {
 
         table.increments('id').primary();
         table.integer('establishment_id').unsigned();
-        table.string('type').notNullable();
         table.string('name').notNullable();
-        table.decimal('price', { precision: 2 }).nullable();
+        table.string('address').notNullable();
+        table.string('phone').notNullable();
+        table.date('birth').notNullable();
         
         table.foreign('establishment_id').references('establishments.id');
 
@@ -17,6 +18,6 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
 
-    return knex.schema.dropTable('procedures');
+    return knex.schema.dropTable('customers');
 
 };
