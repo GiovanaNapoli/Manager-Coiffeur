@@ -11,16 +11,12 @@
 
 const express = require('express');
 const cors = require('cors');
-const routes = require('../routes/index');
+const routes = require('./routes');
 
 var app = express();
 
-app.use(cors);
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(3000, '127.0.0.1', () => {
-    
-    console.log('Servidor Rodando');
-
-});
+module.exports = app;
